@@ -1,0 +1,63 @@
+class Solution {
+    public int romanToInt(String s) {
+        int n = s.length();
+        int ans = 0, i = 0;
+        while(i<n){
+            if(s.charAt(i) == 'I'){
+                if(i+1 < n && s.charAt(i+1) == 'V'){ 
+                    ans += 4;
+                    i+=2;
+                }else if(i+1 < n && s.charAt(i+1) == 'X'){
+                    ans += 9;
+                    i+=2;
+                }else{
+                    ans+=1;
+                    i++;
+                }
+            }
+            if(i<n && s.charAt(i) == 'V'){
+                ans += 5;
+                i++;
+            }
+            if(i<n && s.charAt(i) == 'X'){
+                
+                if(i+1 < n &&s.charAt(i+1) == 'L'){
+                    i+=2; 
+                    ans += 40;
+                }else if(i+1 < n &&s.charAt(i+1) == 'C'){
+                    i+=2;
+                    ans += 90;
+                }else{
+                    ans += 10;
+                    i++;
+                }
+            }
+            if(i<n && s.charAt(i) == 'L'){
+                ans += 50;
+                i++;
+            }
+            if(i<n && s.charAt(i) == 'C'){
+                if(i+1 < n && s.charAt(i+1) == 'D'){
+                    i+=2; 
+                    ans += 400;
+                }else if(i+1 < n && s.charAt(i+1) == 'M'){
+                    ans += 900;
+                    i+=2;
+                }else{
+                     ans += 100;
+                     i++;
+                }
+            }
+            if(i<n && s.charAt(i) == 'D'){
+                ans += 500;
+                i++;
+            }
+            if(i<n && s.charAt(i) == 'M'){
+                ans += 1000;
+                i++;
+            }     
+        }
+
+        return ans;
+    }
+}

@@ -1,0 +1,66 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int []ans = new int[2];
+        int i = 0;
+
+        if(nums.length == 0) return new int[] {-1,-1};
+        if(nums.length == 1 && nums[0]!=target) return new int[] {-1, -1};
+// It will take O(n) time complexity
+
+        // for(int i=0; i<nums.length; i++){
+        //     if(nums[i] == target){
+        //         ans[0] = i;
+        //         break;
+        //     }else{
+        //         ans[0] = -1;
+        //     }
+        // }
+
+        // for(int i = nums.length-1; i>=0; i--){
+        //     if(nums[i] == target){
+        //         ans[1] = i;
+        //         break;
+        //     }else{
+        //         ans[1] = -1;
+        //     }
+        // }
+
+        ans[i++] = lowerSearch(nums, target);
+        ans[i] = upperSearch(nums, target);
+
+        
+        return ans;  
+    }
+// This will take O(log n) time complexity
+    public int lowerSearch(int[] nums, int target){
+        int l = 0,h = nums.length - 1;
+        int ans = -1;
+        while(l <= h){
+
+            int mid = l + (h-l) / 2;
+            if(nums[mid] == target){
+                ans = mid;
+                h = mid-1;
+            }
+            else if(nums[mid] < target) l = mid + 1;
+            else h = mid-1;
+        }
+        return ans;
+    }
+
+    public int upperSearch(int[] nums, int target){
+        int l = 0,h = nums.length - 1;
+        int ans = -1;
+        while(l <= h){
+            
+            int mid = l + (h-l) / 2;
+            if(nums[mid] == target){
+                ans = mid;
+                l = mid + 1;
+            }
+            else if(nums[mid] < target) l = mid + 1;
+            else h = mid-1;
+        }
+        return ans;
+    }
+}

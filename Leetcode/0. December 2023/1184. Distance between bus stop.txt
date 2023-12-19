@@ -1,0 +1,21 @@
+class Solution {
+    public int distanceBetweenBusStops(int[] distance, int start, int destination) {
+    int sumDist1 = 0, sumDist2 = 0, len = distance.length, totalDist = 0;
+
+        if(start > destination){
+            int temp = start;
+            start = destination;
+            destination = temp;
+        }
+        for( int i = start; i < destination; i++ ){
+            sumDist1 += distance[i];
+        }
+
+        for( int j = 0; j<len; j++ ){
+            totalDist += distance[j];
+        }
+        sumDist2 = totalDist - sumDist1;
+        
+        return Math.min(sumDist1, sumDist2);
+    }
+}

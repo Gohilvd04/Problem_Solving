@@ -1,0 +1,54 @@
+class Solution {
+    public List<List<Integer>> reconstructMatrix(int upper, int lower, int[] colsum) {
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+
+        List<Integer> first = new ArrayList<>();
+        List<Integer> second = new ArrayList<>();
+
+        int upperLowerSum = upper + lower;
+
+        int upper1=upper;
+        int lower1=lower;
+
+        int sumOfCol = 0;
+        int countTwo = 0;
+        int lenColsum = colsum.length;
+
+        
+        for(int i=0; i<lenColsum; i++){
+            sumOfCol += colsum[i];
+            
+            if(colsum[i] == 2){
+                first.add(1);
+                second.add(1);
+                upper--;
+                lower--;
+                countTwo++;
+            }
+            else if(colsum[i] == 0){
+                first.add(0);
+                second.add(0);
+            }
+            else {
+                if(upper > lower){
+                    first.add(1);
+                    second.add(0);
+                    upper--;
+                }
+                else {
+                    first.add(0);
+                    second.add(1);
+                    lower--;
+                }
+            }
+        }
+        
+        if((sumOfCol != upperLowerSum) || (upper1<countTwo || lower1<countTwo)) return  ans;
+        ans.add(first);
+        ans.add(second);
+        
+        return ans;
+
+
+    }
+}
