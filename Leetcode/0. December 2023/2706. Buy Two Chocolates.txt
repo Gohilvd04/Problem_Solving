@@ -1,0 +1,16 @@
+class Solution {
+    public int buyChoco(int[] arr, int money) {
+        int n = arr.length;
+        int first = 101, second = 101;
+
+        for(int i = 0; i < n; i++){
+            if(first > arr[i]){
+                second = first;
+                first = arr[i];
+            }
+            else if(arr[i] < second) second = arr[i];  
+        }
+        return (first + second <= money) ? (money - (first + second)) : money ;
+
+    }
+}

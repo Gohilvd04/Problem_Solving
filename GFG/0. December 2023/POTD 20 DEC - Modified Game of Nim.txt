@@ -1,0 +1,10 @@
+class Solution{
+    static int findWinner(int n, int Arr[]){
+        
+        int xor = 0;
+        for(int i = 0; i< n; i++){
+            xor^=Arr[i];
+        }
+        return xor == 0 || n % 2 == 0 ? 1 : 2;
+    }
+}
