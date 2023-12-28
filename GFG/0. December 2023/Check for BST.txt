@@ -1,0 +1,32 @@
+class Solution
+{
+    
+    ArrayList<Integer> ans = new ArrayList<>();
+
+    boolean isBST(Node root){
+        
+        if(root==null){
+            return false;
+        }
+        
+        Traversal(root);
+        
+        for(int i = 0; i < ans.size() - 1; i++) {
+            if(ans.get(i) < ans.get(i + 1)) {
+                continue;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    void Traversal(Node node){
+        if (node != null){
+            Traversal(node.left);
+            ans.add(node.data);
+            Traversal(node.right);
+        }
+    }
+}
