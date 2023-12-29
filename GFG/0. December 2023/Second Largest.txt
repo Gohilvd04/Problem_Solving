@@ -1,0 +1,17 @@
+class Solution {
+    int print2largest(int arr[], int n) {
+        // code here
+        
+        int largest = arr[0], secondLargest = -1;
+        
+        for(int i = 1; i < n; i++){
+            if(arr[i] > largest){
+                secondLargest = largest;
+                largest = arr[i];
+            }
+            else if(arr[i] > secondLargest && arr[i] < largest) secondLargest = arr[i];
+        }
+        
+        return secondLargest;
+    }
+}
