@@ -1,0 +1,14 @@
+class Solution {
+
+    void printTriangle(int n) {
+        // code here
+        for(int i=1; i<=n; i++){
+            
+            for(int j=1; j<=i; j++){
+                int c = 'A'+ i-1;
+                System.out.print((char)c);
+            }
+            System.out.println();
+        }
+    }
+}

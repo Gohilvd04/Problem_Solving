@@ -1,0 +1,7 @@
+import java.util.*;
+public class Solution {
+
+	public static int count(int n){
+		return (int)Math.log10(n)+1;
+	}
+}

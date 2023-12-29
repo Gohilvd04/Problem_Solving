@@ -1,0 +1,17 @@
+class Solution {
+
+    void printSquare(int n) {
+        // code here
+        for(int i=0; i<2*n; i++){
+            for(int j=0; j<2*n; j++){
+                int top=i;
+                int left =j;
+                int right = (2*n-2)-j;
+                int bottom = (2*n-2)-i;
+                int ans = n-(Integer.min(Integer.min(top,down),Integer.min(right,left)));
+                System.out.print(ans);
+            }
+            System.out.println();
+        }
+    }
+}

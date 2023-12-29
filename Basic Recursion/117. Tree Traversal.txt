@@ -1,0 +1,57 @@
+import java.util.* ;
+import java.io.*; 
+/************************************************************
+
+	Following is the Binary Tree node structure:
+
+	class BinaryTreeNode<T> {
+	    T data;
+	    BinaryTreeNode<T> left;
+	    BinaryTreeNode<T> right;
+
+	    public BinaryTreeNode(T data) {
+	        this.data = data;
+	    }
+	}
+
+************************************************************/
+
+public class Solution {
+    public static List<List<Integer>> getTreeTraversal(BinaryTreeNode<Integer> root) {
+        // Write your code here.
+		List<List<Integer>> ans = new ArrayList<>();
+		List<Integer> temp1 = new ArrayList<>();
+		helper1(root, temp1);
+		List<Integer> temp2 = new ArrayList<>();
+		helper2(root, temp2);
+		List<Integer> temp3 = new ArrayList<>();
+		helper3(root, temp3);
+
+		ans.add(temp1);
+		ans.add(temp2);
+		ans.add(temp3);
+
+		return ans;
+    }
+	static void helper1(BinaryTreeNode<Integer> p, List<Integer> ans){
+        if(p == null) return;
+
+        helper1(p.left,ans);
+        ans.add(p.data);
+        helper1(p.right,ans);
+    }
+	static void helper2(BinaryTreeNode<Integer> p, List<Integer> ans){
+        if(p == null) return;
+
+        ans.add(p.data);
+        helper2(p.left,ans);
+        helper2(p.right,ans);
+    }
+	static void helper3(BinaryTreeNode<Integer> p, List<Integer> ans){
+        if(p == null) return;
+
+        helper3(p.left,ans);
+        helper3(p.right,ans);
+        ans.add(p.data);
+    }
+}
