@@ -1,0 +1,30 @@
+class Solution
+{
+    public static String[] winner(String arr[], int n)
+    {
+        int max = Integer.MIN_VALUE;
+        String winnerName = "";
+        HashMap<String, Integer> map = new HashMap<>();
+        
+        for(String name: arr) {
+            
+            int count = map.getOrDefault(name, 0) + 1;
+            map.put(name, count);
+            
+            if(count > max) {
+                max = count;
+                winnerName = name;
+            }
+        }
+        
+        ArrayList<String> names = new ArrayList<>();
+        
+        for(String name: map.keySet()) {
+            if(max == map.get(name)) names.add(name);
+        }
+        
+        Collections.sort(names);
+        
+        return new String[] {names.get(0), ""+ max};
+    }
+}
