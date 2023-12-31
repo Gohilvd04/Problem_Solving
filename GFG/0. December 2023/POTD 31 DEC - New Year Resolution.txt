@@ -1,0 +1,17 @@
+class Solution {
+    public static boolean isPossible(int N, int[] coins) {
+        return sumIsPossible(N, coins, 0, 0);
+    }
+
+    public static boolean sumIsPossible(int N, int[] coins, int i, int sum) {
+        if ((sum > 0) && (sum % 20 == 0 || sum % 24 == 0 || sum == 2024)) {
+            return true;
+        }
+
+        if (i >= N) {
+            return false;
+        }
+
+        return sumIsPossible(N, coins, i + 1, sum) || sumIsPossible(N, coins, i + 1, sum + coins[i]);
+    }
+}
