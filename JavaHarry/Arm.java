@@ -1,21 +1,22 @@
-import java.util.*;;
+import java.util.Scanner;
 
 public class Arm {
-    public static void main(String[] args) {
-        int n, temp,r,sum=0;
+    public static void main(String[] args){
+        int n, temp, r, sum = 0;
         Scanner sc = new Scanner(System.in);
-        n=sc.nextInt();
-        temp=n;
+        n = sc.nextInt();
+        temp = n;
+        sc.close();
+        
+        while (temp > 0) {
+            r = temp % 10;
+            sum += r * r * r;
+            temp /= 10;
+        }
 
-        while(n>0){
-            r=n%10;
-            sum+=r*r*r;
-            n/=10;
-        }
-        if(sum==temp){
+        if (sum == n) {
             System.out.println("This is armstrong");
-        }
-        else{
+        } else {
             System.out.println("not armstrong");
         }
     }
