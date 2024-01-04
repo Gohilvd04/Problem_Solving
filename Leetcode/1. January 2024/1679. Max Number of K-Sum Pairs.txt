@@ -1,0 +1,42 @@
+class Solution {
+    public int maxOperations(int[] arr, int k) {
+        int count = 0;
+        int n = arr.length;
+        
+        HashMap<Integer, Integer> map = new HashMap<>();
+       
+       for(int i=0;i<n;i++){
+            if(map.containsKey(k - arr[i]) && map.get(k - arr[i]) > 0){
+                count++;
+                map.put(k - arr[i], map.get(k - arr[i]) - 1);
+            }else{
+                map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+            }
+        }
+
+        return count;
+    }
+}
+
+// class Solution {
+//     public int maxOperations(int[] arr, int k) {
+//         Arrays.sort(arr);
+//         int count = 0;
+//         int start = 0, end = arr.length - 1;
+
+//         while(start < end){
+//             int sum = arr[start] + arr[end];
+//             if(sum == k){
+//                 count++;
+//                 start++;
+//                 end--;
+//             }
+//             else if(sum < k){
+//                 start++;
+//             }else{
+//                 end--;
+//             }
+//         }
+//         return count;
+//     }
+// }
