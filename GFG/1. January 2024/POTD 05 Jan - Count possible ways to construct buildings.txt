@@ -1,0 +1,13 @@
+class Solution{
+	public:
+	int TotalWays(int N)
+	{
+	    long long building = 1,space = 1,ans = 2;
+	    for(int i = 2; i <= N; i++){
+	        building = space;
+	        space = ans;
+	        ans = (building + space) % 1000000007;
+	    }
+	    return (ans * ans) % 1000000007;
+	}
+};
