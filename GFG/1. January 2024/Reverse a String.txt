@@ -1,0 +1,10 @@
+//Using C#
+
+ Solution
+{
+    public string reverseWord(string str)
+    {
+        //Your code here
+        return new string(str.Reverse().ToArray());
+    }
+}
