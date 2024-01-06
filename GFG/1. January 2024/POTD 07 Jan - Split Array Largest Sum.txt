@@ -1,0 +1,35 @@
+class Solution {
+    static int noOfPartitions(int arr[],int sum){
+        int currSum = 0, partitions = 1;
+        
+        for(int i : arr){
+            if(currSum + i <= sum) currSum += i;
+            else{
+                partitions++;
+                currSum=i;
+            }
+        }
+        return partitions;
+    }
+    static int splitArray(int[] arr , int N, int K) {
+        // code here
+        int minPossible = Integer.MIN_VALUE, maxPossible = 0;
+        
+        for(int i : arr){
+            minPossible = Math.max(minPossible, i);
+            maxPossible += i;
+        }
+        
+        int l = minPossible, r = maxPossible;
+        
+        while(l <= r){
+            int mid = (l + r) / 2;
+            
+            int currPartitions = noOfPartitions(arr, mid);
+            
+            if(currPartitions <= K) r = mid - 1;
+            else l = mid + 1;
+        }
+        return l;
+    }
+};
