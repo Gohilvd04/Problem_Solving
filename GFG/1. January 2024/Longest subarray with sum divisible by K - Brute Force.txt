@@ -1,0 +1,17 @@
+class Solution{
+    int longSubarrWthSumDivByK(int a[], int n, int k){
+        int maxLen = Integer.MIN_VALUE;
+        for(int i = 0; i< n; i++){
+            for(int j = i; j < n; j++){
+                int currSum = 0;
+                for(int x = i; x <= j; +x+){
+                    currSum += a[x];
+                }
+                if(currSum % k == 0){
+                    maxLen = Math.max(maxLen, j - i + 1);
+                }
+            }
+        }
+        return maxLen;
+    }
+}
