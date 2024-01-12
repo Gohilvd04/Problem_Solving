@@ -1,0 +1,35 @@
+//User function Template for Java
+
+/*class Node
+    {
+        int data;
+        Node next;
+        Node(int d) {data = d; next = null; }
+    }
+    */
+class Solution
+{
+    public static Node insertionSort(Node head)
+    {
+        //code here
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        while(head != null){
+            list.add(head.data);
+            head = head.next;
+        }
+        
+        Collections.sort(list);
+        
+        Node last = null;
+        Node ans = new Node(list.get(0));
+        last = ans;
+        
+        for(int i = 1; i < list.size(); i++){
+            Node temp = new Node(list.get(i));
+            last.next = temp;
+            last = temp;
+        }
+        return ans;
+    }
+}
