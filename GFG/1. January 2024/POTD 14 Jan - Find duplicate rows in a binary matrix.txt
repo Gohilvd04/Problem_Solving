@@ -1,0 +1,17 @@
+class Solution{
+    public static ArrayList<Integer> repeatedRows(int matrix[][], int m, int n){
+
+        ArrayList<Integer> list = new ArrayList<>();
+        HashMap<String, Integer> hmap = new HashMap<>();
+    
+        for (int i = 0; i < m; i++) {
+            String rowKey = Arrays.toString(matrix[i]);
+            if (hmap.containsKey(rowKey)) {
+                list.add(i);
+            }
+            hmap.put(rowKey, i);
+        }
+        return list;
+    }
+    
+}
